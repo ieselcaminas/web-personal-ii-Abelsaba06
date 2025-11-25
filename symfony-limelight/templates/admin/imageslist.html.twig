@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de imágenes{% endblock %}
+
+{% block body %}
+<h1>Lista de imágenes</h1>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for image in images %}
+            <tr>
+                <td>{{image.id}}</td>
+                <td>
+                    {% if image.file %}
+                        <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}" style="height: 100px;">
+                    {% else %}
+                        Sin imagen
+                    {% endif %}
+                </td>
+                <td>{{ image.name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

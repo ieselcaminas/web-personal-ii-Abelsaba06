@@ -3,5 +3,8 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<h2>GALLERY </h2>
+<div class="titlepage">
+    <h2>Gallery <span class="green">Admin</span></h2></div>
+    {{form(form,{'attr':{'class':'form-horizontal'}})}}
+    <a href="{{ path('app_images_list') }}">Lista de las galerias</a>
 {% endblock %}
