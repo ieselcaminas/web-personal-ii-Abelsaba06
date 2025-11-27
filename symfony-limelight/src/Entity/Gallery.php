@@ -19,6 +19,9 @@ class Gallery
     #[ORM\Column(length: 255)]
     private ?string $file = null;
 
+    #[ORM\Column(type: 'integer')]
+    private int $likes = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,4 +50,14 @@ class Gallery
 
         return $this;
     }
+    public function getLikes(): int
+{
+    return $this->likes;
+}
+
+public function setLikes(int $likes): static
+{
+    $this->likes = $likes;
+    return $this;
+}
 }

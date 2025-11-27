@@ -1,0 +1,52 @@
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+    gap: 20px; /* espacio entre imágenes */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 50%;
+    display: block;
+}
+.gallery-item figure {
+    position: relative; 
+    overflow: hidden; 
+}
+.like-button{
+    position: absolute;
+    z-index: 10;
+    top: 50%;        
+    left: 43%;
+    background-color: #42ff1d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0; /* Oculta el botón */
+    transition: opacity 0.3s ease-in-out; /* Animación suave */
+}
+
+.gallery-item figure:hover .like-button {
+    opacity: 1; 
+}
+.image-overlay{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(64, 235, 70, 0.842);  
+    z-index: 5; 
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+.gallery-item figure:hover .image-overlay {
+    opacity: 1;
+}

@@ -11,11 +11,12 @@
             <th>ID</th>
             <th>Imagen</th>
             <th>Nombre</th>
+            <th>Likes</th>
         </tr>
     </thead>
     <tbody>
         {% for image in images %}
-            <tr class="table-success text-center">
+            <tr class="table-success text-center ">
                 <td>{{image.id}}</td>
                 <td>
                     {% if image.file %}
@@ -25,6 +26,7 @@
                     {% endif %}
                 </td>
                 <td>{{ image.name }}</td>
+                <td>{{ image.likes }}</td>
             </tr>
         {% endfor %}
     </tbody>

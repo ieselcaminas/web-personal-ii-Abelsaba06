@@ -15,74 +15,28 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_text">
-                     <div class="galleryh3">
+            <div class="row mt-4">
+            <div class="col-md-4 col-sm-6 mx-auto">
+                <div class="gallery_text">
+                    <div class="galleryh3">
                         <h3>Interior Design</h3>
-                        <p>of passages of Lorem <br>
-                           Ipsum available <br>
-                           , but the majority <br>
+                        <p>of passages of Lorem 
+                           Ipsum available 
+                           , but the majority 
                            have suffer
                         </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery1.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery2.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery3.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery4.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_text">
-                     <div class="galleryh3">
-                        <h3>Interior Design</h3>
-                        <p>of passages of Lorem <br>
-                           Ipsum available <br>
-                           , but the majority <br>
-                           have suffer
-                        </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_text">
-                     <div class="galleryh3">
-                        <h3>Interior Design</h3>
-                        <p>of passages of Lorem <br>
-                           Ipsum available <br>
-                           , but the majority <br>
-                           have suffer
-                        </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery5.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/gallery6.jpg" alt="#"/></figure>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- end gallery -->
+            <div class="gallery-grid mt-3">
+               {% for image in images %}
+                <div class="gallery-item">
+                    <figure>
+                    <div class="image-overlay"></div>
+                        <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">
+                           <button class="like-button" data-image-id="{{ image.id }}">Like</button>
+                    </figure>
+                </div>
+               {% endfor %}
+</div>
 {% endblock %}

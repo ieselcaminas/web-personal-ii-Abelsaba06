@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Gallery;
 use App\Form\ContactFormType;
+use App\Repository\GalleryRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,13 +42,15 @@ final class PageController extends AbstractController
         ]);
     }
     #[Route('/gallery', name: 'gallery')]
-    public function gallery(): Response
+    public function gallery(GalleryRepository $galeria): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
+        $imagen=$galeria->findAll();
         return $this->render('page/gallery.html.twig', [
             'controller_name' => 'PageController',
+            'images' => $imagen,
         ]);
     }
     #[Route('/testimonial', name: 'testimonial')]
@@ -65,8 +69,10 @@ final class PageController extends AbstractController
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
+        
         return $this->render('page/service.html.twig', [
             'controller_name' => 'PageController',
+            
         ]);
     }
 }
