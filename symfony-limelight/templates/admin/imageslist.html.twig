@@ -19,7 +19,7 @@
                 <td>{{image.id}}</td>
                 <td>
                     {% if image.file %}
-                        <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}" style="height: 100px;">
+                        <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}" style="height: 100px;" class="img-fluid d-block mx-auto w-50">
                     {% else %}
                         Sin imagen
                     {% endif %}
