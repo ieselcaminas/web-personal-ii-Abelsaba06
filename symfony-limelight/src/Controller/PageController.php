@@ -98,13 +98,13 @@ final class PageController extends AbstractController
         'commentForm' => $form->createView()
     ]);
     }
-    #[Route('/imagen/{id?1}/commentarios',name:'comentarios')]
-    public function mostrarCommnetarios(ManagerRegistry $doctrine,int $galeria_id): Response
+    #[Route('/imagen/{id?1}/comentarios',name:'comentarios')]
+    public function mostrarCommnetarios(ManagerRegistry $doctrine,int $id): Response
     {
         $repositorio = $doctrine->getRepository(Comment::class);
-        $comentarios=$repositorio->findBy(['galeria_id' => $galeria_id]);
+        $comentarios=$repositorio->findBy(['galeria' => $id]);
 
-        return $this->render('pages/listacomentarios.html.twig', [
+        return $this->render('page/listacomentarios.html.twig', [
         'comentarios' => $comentarios,]);
     }
 }

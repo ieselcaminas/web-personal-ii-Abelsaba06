@@ -1,5 +1,16 @@
-{% for comentario in comentarios %}
-    <div>
-        
-    </div>
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<h3>Comentarios</h3>
+<ul>
+{% for comment in comentarios %}
+    <li>
+        <strong>{{ comment.name }}</strong> ({{ comment.publishedAt|date('Y-m-d H:i') }})<br>
+        {{ comment.text }}
+    </li>
+{% else %}
+    <li>No hay comentarios para esta imagen.</li>
 {% endfor %}
+</ul>
+{% endblock %}
