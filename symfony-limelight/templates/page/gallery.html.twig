@@ -30,7 +30,7 @@
                     <figure>
                     <div class="image-overlay">
                      </div>
-                        <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">
+                        <a href="{{ path('imagen',{'id': image.id})}}"><img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}"></a>
                         <button class="like-button" data-image-id="{{ image.id }}">Like</button>
                     </figure>
                     <button class="comment-button" data-image-id="{{ image.id }}">Comment</button>

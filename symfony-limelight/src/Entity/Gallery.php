@@ -23,6 +23,8 @@ class Gallery
 
     #[ORM\Column(type: 'integer')]
     private int $likes = 0;
+    #[ORM\Column(type: 'integer')]
+    private $numComments = 0;
 
     /**
      * @var Collection<int, Comment>
@@ -73,7 +75,6 @@ public function setLikes(int $likes): static
     $this->likes = $likes;
     return $this;
 }
-
 /**
  * @return Collection<int, Comment>
  */
@@ -100,6 +101,16 @@ public function removeComment(Comment $comment): static
         }
     }
 
+    return $this;
+}
+public function getNumComments(): int
+{
+    return $this->numComments;
+}
+
+public function setNumComments(int $num): self
+{
+    $this->numComments = $num;
     return $this;
 }
 }
