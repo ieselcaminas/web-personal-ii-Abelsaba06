@@ -2,12 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Entity\Gallery;
-use App\Form\ContactFormType;
 use App\Repository\GalleryRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,5 +71,14 @@ final class PageController extends AbstractController
             'controller_name' => 'PageController',
             
         ]);
+    }
+    #[Route('/imagen/{id?1}',name:'imagen')]
+    public function mostrarImagen(ManagerRegistry $doctrine,int $id): Response
+    {
+        $repositorio = $doctrine->getRepository(Gallery::class);
+        $imagen=$repositorio->find($id);
+        return $this->render('page/imagen.html.twig', [
+        'image' => $imagen,
+    ]);
     }
 }

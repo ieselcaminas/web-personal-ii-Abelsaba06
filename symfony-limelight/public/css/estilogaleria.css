@@ -32,7 +32,16 @@
     opacity: 0; /* Oculta el botón */
     transition: opacity 0.3s ease-in-out; /* Animación suave */
 }
-
+.comment-button {
+    display: block;
+    margin: 10px auto 0 auto;
+    background-color: #42ff1d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
 .gallery-item figure:hover .like-button {
     opacity: 1; 
 }

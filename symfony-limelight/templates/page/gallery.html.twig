@@ -28,10 +28,12 @@
                {% for image in images %}
                 <div class="gallery-item">
                     <figure>
-                    <div class="image-overlay"></div>
+                    <div class="image-overlay">
+                     </div>
                         <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">
-                           <button class="like-button" data-image-id="{{ image.id }}">Like</button>
+                        <button class="like-button" data-image-id="{{ image.id }}">Like</button>
                     </figure>
+                    <button class="comment-button" data-image-id="{{ image.id }}">Comment</button>
                 </div>
                {% endfor %}
 </div>

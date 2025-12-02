@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}" style="height: 100px;" class="img-fluid d-block mx-auto w-50">
+    <p>{{image.name}}</p>
+    <p>{{image.likes}}</p>
+{{ include ('page/_form_comment.html.twig') }}
+{% endblock %}
