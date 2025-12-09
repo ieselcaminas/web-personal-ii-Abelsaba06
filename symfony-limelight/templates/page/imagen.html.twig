@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">    <p>{{image.name}}</p>
+    <figure>
+    <div class="image-overlay">
+    </div>
+    <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">
+    </figure>
     <p>Likes {{image.likes}}</p>
     <p><a href="{{ path('comentarios', {'id': image.id}) }}">
         <button>Comentarios</button>
