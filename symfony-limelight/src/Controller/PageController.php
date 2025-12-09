@@ -101,10 +101,25 @@ final class PageController extends AbstractController
     #[Route('/imagen/{id?1}/comentarios',name:'comentarios')]
     public function mostrarCommnetarios(ManagerRegistry $doctrine,int $id): Response
     {
+
         $repositorio = $doctrine->getRepository(Comment::class);
         $comentarios=$repositorio->findBy(['galeria' => $id]);
 
         return $this->render('page/listacomentarios.html.twig', [
-        'comentarios' => $comentarios,]);
+        'comentarios' => $comentarios,
+        'imageid' => $id,]);
+    }
+    #[Route('/imagen/{id?1}/like',name:'like')]
+    public function darLike(ManagerRegistry $doctrine,int $id): Response
+    {
+        $repositorio = $doctrine->getRepository(Gallery::class);
+        $imagen=$repositorio->find($id);
+        if($imagen){
+            $imagen->Like($imagen->getLikes());
+            $entityManager = $doctrine->getManager();    
+            $entityManager->persist($imagen);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('imagen', ["id" => $imagen->getId()]);
     }
 }

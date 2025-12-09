@@ -70,9 +70,9 @@ class Gallery
     return $this->likes;
 }
 
-public function setLikes(int $likes): static
+public function Like(int $likes): static
 {
-    $this->likes = $likes;
+    $this->likes = $likes+1;
     return $this;
 }
 /**
