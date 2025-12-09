@@ -39,9 +39,7 @@
                               </li>
                               {% if app.user %}
                                  {% if is_granted('ROLE_ADMIN') %}
-                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_images') }}">Admin</a>
-                                 </li>
+                                 <li class="nav-item {{ (app.request.attributes.get('_route') == 'app_images')  ? 'active': ''}}"><a class="nav-link" href="{{ path('app_images') }}">Admin</a></li>
                               {% endif %}
                               <li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}"></i>Logout</a></li>
                               {% else %}

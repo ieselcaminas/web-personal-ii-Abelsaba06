@@ -3,7 +3,7 @@
     <figure>
     <div class="image-overlay">
     </div>
-    <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}">
+    <img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}" style="height: 100px;" class="img-fluid d-block mx-auto w-50">
     </figure>
     <p>Likes {{image.likes}}</p>
     <p><a href="{{ path('comentarios', {'id': image.id}) }}">
