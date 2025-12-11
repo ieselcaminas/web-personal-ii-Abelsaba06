@@ -122,4 +122,14 @@ final class PageController extends AbstractController
         }
         return $this->redirectToRoute('imagen', ["id" => $imagen->getId()]);
     }
+    #[Route('/blog/{page}', name: 'blog')]
+    public function blog(ManagerRegistry $doctrine, int $page = 1): Response
+    {
+        $repository = $doctrine->getRepository(Gallery::class);
+        $galerias = $repository->findAllPaginated($page);
+
+        return $this->render('page/gallery.html.twig', [
+            'galerias' => $galerias,
+        ]);
+    }
 }

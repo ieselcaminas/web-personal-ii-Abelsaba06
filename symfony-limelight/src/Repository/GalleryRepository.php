@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Gallery;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Gallery>
@@ -14,6 +15,11 @@ class GalleryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Gallery::class);
+    }
+    public function findAllPaginated(int $page): Paginator
+    {
+        $qb =  $this->createQueryBuilder('p')->orderBy('p.publishedAt', 'DESC');
+        return (new Paginator($qb))->paginate($page);
     }
 
     //    /**

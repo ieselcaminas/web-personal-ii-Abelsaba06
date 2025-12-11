@@ -33,8 +33,8 @@
                         <a href="{{ path('imagen',{'id': image.id})}}"><img src="{{ asset('images/index/gallery/' ~ image.file) }}" alt="{{ image.file }}"></a>
                         <button class="like-button" data-image-id="{{ image.id }}"><a href="{{ path('like', {'id':image.id}) }}">Like</a></button>
                     </figure>
-                    <button class="comment-button" data-image-id="{{ image.id }}"><a href="{{ path('comentarios',{'id': image.id})}}">Comment</a></button>
+                    <button class="comment-button" data-image-id="{{ image.id }}"><a href="{{ path('comentarios',{'id': image.id})}}">Commentarios</a></button>
                 </div>
                {% endfor %}
-</div>
+      </div>
 {% endblock %}
