@@ -18,7 +18,7 @@ class GalleryRepository extends ServiceEntityRepository
     }
     public function findAllPaginated(int $page): Paginator
     {
-        $qb =  $this->createQueryBuilder('p')->orderBy('p.publishedAt', 'DESC');
+        $qb =  $this->createQueryBuilder('p')->orderBy('p.name', 'DESC');
         return (new Paginator($qb))->paginate($page);
     }
 

@@ -41,16 +41,18 @@ final class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
-    #[Route('/gallery', name: 'gallery')]
-    public function gallery(GalleryRepository $galeria): Response
+    #[Route('/gallery/{page}', name: 'gallery')]
+    public function gallery(ManagerRegistry $doctrine, int $page = 1): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
-        $imagen=$galeria->findAll();
+        $repository = $doctrine->getRepository(Gallery::class);
+        $images = $repository->findAllPaginated($page);
+
         return $this->render('page/gallery.html.twig', [
             'controller_name' => 'PageController',
-            'images' => $imagen,
+            'images' => $images,
         ]);
     }
     #[Route('/testimonial', name: 'testimonial')]
@@ -121,15 +123,5 @@ final class PageController extends AbstractController
             $entityManager->flush();
         }
         return $this->redirectToRoute('imagen', ["id" => $imagen->getId()]);
-    }
-    #[Route('/blog/{page}', name: 'blog')]
-    public function blog(ManagerRegistry $doctrine, int $page = 1): Response
-    {
-        $repository = $doctrine->getRepository(Gallery::class);
-        $galerias = $repository->findAllPaginated($page);
-
-        return $this->render('page/gallery.html.twig', [
-            'galerias' => $galerias,
-        ]);
     }
 }

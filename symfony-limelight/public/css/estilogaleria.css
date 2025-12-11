@@ -60,3 +60,27 @@
 .gallery-item figure:hover .image-overlay {
     opacity: 1;
 }
+ul.pagination {
+    display: flex;
+    justify-content: center; 
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+ul.pagination li {
+    display: inline-block; 
+    margin: 0 5px;
+}
+ul.pagination li a, 
+ul.pagination li span {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+}
+ul.pagination li.active span {
+    background-color: #3cff00;
+    color: white;
+    border-color: #00ff2a;
+}

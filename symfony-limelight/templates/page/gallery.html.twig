@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="gallery-grid mt-3">
-               {% for image in images %}
+               {% for image in images.results %}
                 <div class="gallery-item">
                     <figure>
                     <div class="image-overlay">
@@ -36,5 +36,30 @@
                     <button class="comment-button" data-image-id="{{ image.id }}"><a href="{{ path('comentarios',{'id': image.id})}}">Commentarios</a></button>
                 </div>
                {% endfor %}
+               {% if images.hasToPaginate %}
+                  <div class="text-left">
+                     <ul class="pagination">
+                           {% if images.hasPreviousPage %}
+                              <li class="prev"><a href="{{ path('gallery', {page: images.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> Previous</a></li>
+                           {% else %}
+                              <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> Previous </span></li>
+                           {% endif %}
+
+                           {% for i in 1..images.lastPage %}
+                              {% if i == images.currentPage %}
+                                 <li class="active"><span>{{ i }}</span></li>
+                              {% else %}
+                                 <li><a href="{{ path('gallery', {page: i}) }}">{{ i }}</a></li>
+                              {% endif %}
+                           {% endfor %}
+
+                           {% if images.hasNextPage %}
+                              <li class="next"><a href="{{ path('gallery', {page: images.nextPage}) }}" rel="next">Next <i class="fa fw fa-arrow-right"></i></a></li>
+                           {% else %}
+                              <li class="next disabled"><span>Next <i class="fa fw fa-arrow-right"></i></span></li>
+                           {% endif %}
+                     </ul>
+                  </div>
+               {% endif %}
       </div>
 {% endblock %}
