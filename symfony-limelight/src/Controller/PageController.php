@@ -41,7 +41,7 @@ final class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
-    #[Route('/gallery/{page}', name: 'gallery')]
+    #[Route('/gallery/{page}', name: 'gallery',requirements: ['page' => '\d+'])]
     public function gallery(ManagerRegistry $doctrine, int $page = 1): Response
     {
         if (!$this->getUser()) {
@@ -55,7 +55,7 @@ final class PageController extends AbstractController
             'images' => $images,
         ]);
     }
-    #[Route('/gallery/buscar/{page}', name: 'gallery_buscar')]
+    #[Route('/gallery/buscar', name: 'gallery_buscar')]
     public function buscar(ManagerRegistry $doctrine,  Request $request, int $page = 1): Response
     {
         $repository = $doctrine->getRepository(Gallery::class);
