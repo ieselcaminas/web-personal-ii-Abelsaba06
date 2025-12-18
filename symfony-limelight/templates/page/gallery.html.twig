@@ -3,6 +3,11 @@
 {% block title %}Gallery{% endblock %}
 
 {% block body %}
+   <form class="" action='{{ path('gallery_buscar') }}'>
+   <input type="text" class="form-control" style="display:unset; width:85%" placeholder="Buscar" name='searchTerm'>
+   <button type='submit' class="btn btn-primary btn-lime"><i class="fa fa-search"></i>
+   </button>
+   </form>
 <!-- gallery -->
       <div class="gallery">
          <div class="container">
@@ -39,6 +44,7 @@
                {% if images.hasToPaginate %}
                   <div class="text-left">
                      <ul class="pagination">
+                        {% if app.request.attributes.get('_route') == 'gallery' %}
                            {% if images.hasPreviousPage %}
                               <li class="prev"><a href="{{ path('gallery', {page: images.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> Previous</a></li>
                            {% else %}
@@ -58,6 +64,8 @@
                            {% else %}
                               <li class="next disabled"><span>Next <i class="fa fw fa-arrow-right"></i></span></li>
                            {% endif %}
+                        {% else %}
+                        {% endif %}
                      </ul>
                   </div>
                {% endif %}

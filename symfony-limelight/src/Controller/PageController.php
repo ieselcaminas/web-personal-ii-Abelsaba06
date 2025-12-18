@@ -55,6 +55,18 @@ final class PageController extends AbstractController
             'images' => $images,
         ]);
     }
+    #[Route('/gallery/buscar/{page}', name: 'gallery_buscar')]
+    public function buscar(ManagerRegistry $doctrine,  Request $request, int $page = 1): Response
+    {
+        $repository = $doctrine->getRepository(Gallery::class);
+        $searchTerm = $request->query->get('searchTerm', '');
+        $images = $repository->findByTextPaginated($page, $searchTerm);
+        return $this->render('page/gallery.html.twig', [
+            'controller_name' => 'PageController',
+            'images' => $images,
+            'searchTerm' => $searchTerm
+        ]);
+    }
     #[Route('/testimonial', name: 'testimonial')]
     public function testimonial(): Response
     {
