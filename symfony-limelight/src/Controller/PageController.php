@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Gallery;
 use App\Form\CommentFormType;
-use App\Repository\GalleryRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,11 +55,11 @@ final class PageController extends AbstractController
         ]);
     }
     #[Route('/gallery/buscar', name: 'gallery_buscar')]
-    public function buscar(ManagerRegistry $doctrine,  Request $request, int $page = 1): Response
+    public function buscar(ManagerRegistry $doctrine,  Request $request): Response
     {
         $repository = $doctrine->getRepository(Gallery::class);
         $searchTerm = $request->query->get('searchTerm', '');
-        $images = $repository->findByTextPaginated($page, $searchTerm);
+        $images = $repository->findByText($searchTerm);
         return $this->render('page/gallery.html.twig', [
             'controller_name' => 'PageController',
             'images' => $images,

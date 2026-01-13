@@ -21,14 +21,17 @@ class GalleryRepository extends ServiceEntityRepository
         $qb =  $this->createQueryBuilder('p')->orderBy('p.id', 'ASC');
         return (new Paginator($qb))->paginate($page);
     }
-    public function findByTextPaginated(int $page, string $searchTerm)
+    public function findByText(string $searchTerm): array
     {
-        $qb = $this->createQueryBuilder('p')
-            ->andWhere("p.id LIKE :val")
+        return $this->createQueryBuilder('p')
+            ->andWhere("p.name LIKE :val")
             ->setParameter('val', '%'.$searchTerm.'%')
-            ->orderBy('p.id', 'ASC');
-        return (new Paginator($qb))->paginate($page);
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
     }
+
 
     //    /**
     //     * @return Gallery[] Returns an array of Gallery objects
