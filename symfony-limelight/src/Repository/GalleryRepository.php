@@ -18,15 +18,15 @@ class GalleryRepository extends ServiceEntityRepository
     }
     public function findAllPaginated(int $page): Paginator
     {
-        $qb =  $this->createQueryBuilder('p')->orderBy('p.name', 'DESC');
+        $qb =  $this->createQueryBuilder('p')->orderBy('p.id', 'ASC');
         return (new Paginator($qb))->paginate($page);
     }
     public function findByTextPaginated(int $page, string $searchTerm)
     {
         $qb = $this->createQueryBuilder('p')
-            ->andWhere("p.name LIKE :val")
+            ->andWhere("p.id LIKE :val")
             ->setParameter('val', '%'.$searchTerm.'%')
-            ->orderBy('p.name', 'DESC');
+            ->orderBy('p.id', 'ASC');
         return (new Paginator($qb))->paginate($page);
     }
 

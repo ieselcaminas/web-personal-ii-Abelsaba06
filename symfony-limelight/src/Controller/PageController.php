@@ -101,7 +101,7 @@ final class PageController extends AbstractController
             $comment = $form->getData();
             $comment->setGaleria($imagen);  
             $comment->setPublishedAt(new \DateTime());
-            $imagen->setNumComments($imagen->getNumComments()+1);
+            $imagen->setNumComments($imagen->getComments()->count()+1);
             $entityManager = $doctrine->getManager();    
             $entityManager->persist($comment);
             $entityManager->flush();
@@ -110,7 +110,7 @@ final class PageController extends AbstractController
         return $this->render('page/imagen.html.twig', [
         'image' => $imagen,
         'commentForm' => $form->createView()
-    ]);
+        ]);
     }
     #[Route('/imagen/{id?1}/comentarios',name:'comentarios')]
     public function mostrarCommnetarios(ManagerRegistry $doctrine,int $id): Response

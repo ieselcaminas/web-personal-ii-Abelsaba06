@@ -46,6 +46,7 @@ final class AdminController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($gallery);
             $entityManager->flush();
+            return $this->redirectToRoute('gallery');
         }
 
         return $this->render('admin/index.html.twig', [
