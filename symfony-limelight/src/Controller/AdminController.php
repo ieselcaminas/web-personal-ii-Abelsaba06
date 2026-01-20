@@ -20,6 +20,7 @@ final class AdminController extends AbstractController
     #[Route('/admin/images', name: 'app_images')]
     public function images(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
     {
+        
         $gallery = new Gallery();
         $form = $this->createForm(GalleryFormType::class, $gallery);
         $form->handleRequest($request);

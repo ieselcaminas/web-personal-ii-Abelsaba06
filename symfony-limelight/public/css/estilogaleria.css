@@ -114,3 +114,12 @@ ul.pagination li.active span {
     background-color: #236616;
     border-color: #2a8018;
 }
+.titulo-admin{
+    font-family: 'Poppins', sans-serif; 
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
