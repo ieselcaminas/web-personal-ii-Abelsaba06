@@ -62,10 +62,11 @@
 }
 ul.pagination {
     display: flex;
+    width: 100%;
     justify-content: center; 
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 ul.pagination li {
     display: inline-block; 
@@ -78,6 +79,7 @@ ul.pagination li span {
     text-decoration: none;
     color: #333;
     border-radius: 4px;
+    display: block;
 }
 ul.pagination li.active span {
     background-color:#42ff1d;

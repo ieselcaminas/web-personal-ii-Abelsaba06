@@ -5,8 +5,7 @@
 {% block body %}
    <form class="" action='{{ path('gallery_buscar') }}'>
    <input type="text" class="form-control" style="display:unset; width:85%" placeholder="Buscar" name='searchTerm'>
-   <button type='submit' class="btn btn-primary btn-lime"><i class="fa fa-search"></i>
-   </button>
+   <button type='submit' class="btn btn-primary btn-lime"><i class="fa fa-search"></i></button>
    </form>
 <!-- gallery -->
       <div class="gallery">
@@ -19,16 +18,16 @@
                   </div>
                </div>
             </div>
-            <div class="row">
             <div class="row mt-4">
             <div class="col-md-6 col-sm-6 mx-auto">
                 <div class="gallery_text">
                     <div class="galleryh3">
                         <h3>Diseños para el interior de tu casa</h3>
-                        <p>Te hacemos una muestra de todos los diseños que te ofrecemos para que el interior de tu casa quede mas reluciente, moderno e innovador que nunca</p>
+                        <p>Te hacemos una muestra de todos los diseños que te ofrecemos...</p>
                     </div>
                 </div>
             </div>
+         </div>
             <div class="gallery-grid mt-3">
                {% set lista_imagenes = images.results is defined ? images.results : images %}
                {% for image in lista_imagenes %}
@@ -44,34 +43,36 @@
                {% else %}
                   <div class="col-12"><p>No se encontraron imágenes.</p></div>
                {% endfor %}
+            </div>  
                {% if images.hasToPaginate is defined and images.hasToPaginate %}
-                  <div class="text-left">
-                     <ul class="pagination">
-                        {% if app.request.attributes.get('_route') == 'gallery' %}
-                           {% if images.hasPreviousPage %}
-                              <li class="prev"><a href="{{ path('gallery', {page: images.previousPage}) }}" rel="previous"><i class="fa fw fa-arrow-left"></i> Previous</a></li>
-                           {% else %}
-                              <li class="prev disabled"><span><i class="fa fw fa-long-arrow-left"></i> Previous </span></li>
-                           {% endif %}
-
-                           {% for i in 1..images.lastPage %}
-                              {% if i == images.currentPage %}
-                                 <li class="active"><span>{{ i }}</span></li>
+                  <div class="row mt-4 mb-5"> 
+                     <div class="col-12 text-center">
+                        <ul class="pagination">
+                           {% if app.request.attributes.get('_route') == 'gallery' %}
+                              {% if images.hasPreviousPage %}
+                                 <li class="prev"><a href="{{ path('gallery', {page: images.previousPage}) }}" rel="previous"><i class="fa fw fa-arrow-left"></i> Previous</a></li>
                               {% else %}
-                                 <li><a href="{{ path('gallery', {page: i}) }}">{{ i }}</a></li>
+                                 <li class="prev disabled"><span><i class="fa fw fa-long-arrow-left"></i> Previous </span></li>
                               {% endif %}
-                           {% endfor %}
 
-                           {% if images.hasNextPage %}
-                              <li class="next"><a href="{{ path('gallery', {page: images.nextPage}) }}" rel="next">Next <i class="fa fw fa-arrow-right"></i></a></li>
+                              {% for i in 1..images.lastPage %}
+                                 {% if i == images.currentPage %}
+                                    <li class="active"><span>{{ i }}</span></li>
+                                 {% else %}
+                                    <li><a href="{{ path('gallery', {page: i}) }}">{{ i }}</a></li>
+                                 {% endif %}
+                              {% endfor %}
+
+                              {% if images.hasNextPage %}
+                                 <li class="next"><a href="{{ path('gallery', {page: images.nextPage}) }}" rel="next">Next <i class="fa fw fa-arrow-right"></i></a></li>
+                              {% else %}
+                                 <li class="next disabled"><span>Next <i class="fa fw fa-long-arrow-right"></i></span></li>
+                              {% endif %}
                            {% else %}
-                              <li class="next disabled"><span>Next <i class="fa fw fa-long-arrow-right"></i></span></li>
                            {% endif %}
-                        {% else %}
-                        {% endif %}
-                     </ul>
+                        </ul>
+                     </div>
                   </div>
                {% endif %}
-            </div>     
       </div>
 {% endblock %}
