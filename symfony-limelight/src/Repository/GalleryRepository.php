@@ -25,7 +25,7 @@ class GalleryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->andWhere("p.name LIKE :val")
-            ->setParameter('val', '%'.$searchTerm.'%')
+            ->setParameter('val', ''.$searchTerm.'%')
             ->orderBy('p.id', 'DESC')
             ->getQuery()
             ->getResult();
