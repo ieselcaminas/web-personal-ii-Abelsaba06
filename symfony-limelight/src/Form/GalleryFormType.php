@@ -20,7 +20,7 @@ class GalleryFormType extends AbstractType
                     'mapped' => false,
                     'constraints' => [
                     new File(['mimeTypes' => ['image/jpeg','image/png',],'mimeTypesMessage' => 'Suba una imagen valida porfavor',])],])
-            ->add('Send', SubmitType::class, ['attr' => ['class'=>'pull-right btn btn-lg sr-button']]);
+            ->add('Send', SubmitType::class, ['attr' => ['class'=>'btn btn-lg sr-button']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

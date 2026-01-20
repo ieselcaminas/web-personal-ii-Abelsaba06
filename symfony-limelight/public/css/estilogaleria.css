@@ -86,3 +86,31 @@ ul.pagination li.active span {
     color:white;
     border-color:#42ff1d;
 }
+.btn-lime{
+    background-color:#42ff1d;
+    color: #fff;
+    border-color: #42ff1d;
+}
+.btn-lime:hover {
+    color: #fff;
+    background-color: #236616;
+    border-color: #2a8018;
+}
+.form-horizontal{
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.form-horizontal div{
+    margin-bottom: 20px;
+}
+#gallery_form_Send{
+    background-color:#42ff1d;
+    color: #fff;
+    border-color: #42ff1d;
+}
+#gallery_form_Send:hover {
+    color: #fff;
+    background-color: #236616;
+    border-color: #2a8018;
+}
